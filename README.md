@@ -6,4 +6,5 @@ This is a forge mod that can either be installed on a client or a server. It doe
 ## (Currently) supported minecraft versions
 * 1.17 (Forge 37+) [latest release](https://github.com/Schoolboy215/UwuizeChat/releases/tag/Minecraft_v1.17)
 * 1.16 (Forge 32+) [latest release](https://github.com/Schoolboy215/UwuizeChat/releases/tag/Minecraft_v1.16)
+* 1.14 (Forge 28+) [latest release](https://github.com/Schoolboy215/UwuizeChat/releases/tag/Minecraft_v1.14)
 

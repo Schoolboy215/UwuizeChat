@@ -1,6 +1,7 @@
 package com.Schoolboy215.UwuizeChat;
 
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ClientChatEvent;
@@ -28,9 +29,11 @@ public class UwuizeChat {
     @OnlyIn(Dist.DEDICATED_SERVER)
     @SubscribeEvent
     public void onPlayerSendingChat(ServerChatEvent event) {
-        TranslatableComponent textComponent = (TranslatableComponent) event.getComponent();
-        Object[] args = textComponent.getArgs();
-        args[1] = this.uwuizeString((String) args[1]);
+        TranslationTextComponent textComponent = (TranslationTextComponent) event.getComponent();
+        Object[] args = textComponent.getFormatArgs();
+        StringTextComponent stringTextComponent = (StringTextComponent) args[1];
+        StringTextComponent replacementText = new StringTextComponent(this.uwuizeString(stringTextComponent.getText()));
+        args[1] = replacementText;
         event.setComponent(textComponent);
     }
 

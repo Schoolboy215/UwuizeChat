@@ -1,0 +1,42 @@
+# The name of the mod loader type to load - for regular FML @Mod mods it should be javafml
+    modLoader="javafml"
+    # A version range to match for said mod loader - for regular FML @Mod it will be the forge version
+    # Forge for 1.15.2 is version 31
+    loaderVersion="[31,)"
+    # The license for your mod. This is optional metadata and allows for easier comprehension of your redistributive properties.
+    # Review your options at https://choosealicense.com/. All rights reserved is the default copyright stance, and is thus the default here.
+    license="MIT"
+    # A URL to refer people to when problems occur with this mod
+    issueTrackerURL="https://github.com/Schoolboy215/UwuizeChat/issues"
+    # If the mods defined in this file should show as separate resource packs
+    showAsResourcePack=false
+
+    [[mods]]
+      modId="uwuizechat"
+      version="1.17-0.0.1.0"
+      displayName="Uwuize Chat"
+      credits="Sariander, for the inspiring connection to other in-game speech disorders"
+      authors="James McKay"
+      description='''
+      Changes all outgoing chat to be uwu-ized
+      '''
+
+        [[dependencies.uwuizechat]] #optional
+            # the modid of the dependency
+            modId="forge" #mandatory
+            # Does this dependency have to exist - if not, ordering below must be specified
+            mandatory=true #mandatory
+            # The version range of the dependency
+            versionRange="[37,)" #mandatory
+            # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
+            ordering="NONE"
+            # Side this dependency is applied on - BOTH, CLIENT or SERVER
+            side="BOTH"
+        # Here's another dependency
+        [[dependencies.uwuizechat]]
+            modId="minecraft"
+            mandatory=true
+            # This version range declares a minimum of the current minecraft version up to but not including the next major version
+            versionRange="[1.17.1,)"
+            ordering="NONE"
+            side="BOTH"

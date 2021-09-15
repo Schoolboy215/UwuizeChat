@@ -41,6 +41,12 @@ public class UwuizeChat {
     {
         String ret = _text;
 
+        // The first character is a slash. Don't touch this message because it's a command
+        if (ret.charAt(0) == '/')
+        {
+            return ret;
+        }
+
         ret = ret.replaceAll("(?:r|l)","w");
         ret = ret.replaceAll("(?:R|L)", "W");
 

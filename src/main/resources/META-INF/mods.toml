@@ -13,7 +13,7 @@
 
     [[mods]]
       modId="uwuizechat"
-      version="1.17-0.0.1.0"
+      version="1.19-0.0.1.1"
       displayName="Uwuize Chat"
       credits="Sariander, for the inspiring connection to other in-game speech disorders"
       authors="Schoolboy215"
@@ -37,6 +37,6 @@
             modId="minecraft"
             mandatory=true
             # This version range declares a minimum of the current minecraft version up to but not including the next major version
-            versionRange="[1.17.1,)"
+            versionRange="[1.19,)"
             ordering="NONE"
             side="BOTH"

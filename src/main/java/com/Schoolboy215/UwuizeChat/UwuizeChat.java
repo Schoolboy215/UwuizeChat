@@ -1,11 +1,13 @@
 package com.Schoolboy215.UwuizeChat;
 
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.*;
+import net.minecraft.network.chat.contents.TranslatableContents;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ClientChatEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.ServerChatEvent;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -28,10 +30,15 @@ public class UwuizeChat {
     @OnlyIn(Dist.DEDICATED_SERVER)
     @SubscribeEvent
     public void onPlayerSendingChat(ServerChatEvent event) {
-        TranslatableComponent textComponent = (TranslatableComponent) event.getComponent();
-        Object[] args = textComponent.getArgs();
-        args[1] = this.uwuizeString((String) args[1]);
-        event.setComponent(textComponent);
+        MutableComponent originalComponent = (MutableComponent) event.getComponent();
+        String originalText     = originalComponent.getString();
+        String translatedText   = this.uwuizeString(originalText);
+        if (translatedText != originalText) {
+            MutableComponent headerComponent = MutableComponent.create(new TranslatableContents("Chat needs more uwu! ")).withStyle(Style.EMPTY.withColor(TextColor.fromRgb(16754217)));
+            MutableComponent newComponent = MutableComponent.create(new TranslatableContents("(Send this instead: \"" + translatedText + "\")")).withStyle(Style.EMPTY.withColor(TextColor.fromRgb(16777215)));
+            event.getPlayer().sendSystemMessage(headerComponent.append(newComponent));
+            event.setCanceled(true);
+        }
     }
 
     private String uwuizeString(String _text)
